@@ -1,56 +1,8 @@
-# burp-suite-http-proxy-history-converter
+# RecolectadorURLsFromBurpSuite
 
-Python script that converts Burp Suite HTTP proxy history files to HTML or CSV.
+Python script que permite a partir de un file XML exportado desde el Proxy History de Burp Suite, parsear las URLs e imprimirlas por pantalla.
 
-The history file can be exported from Burp Suite by opening *Proxy > HTTP
-History*, selecting relevant records, right-clicking and choosing *Save items*.
-
-
-Example history file is included in
-[example/burp-http-history.xml](example/burp-http-history.xml).
-
-Besides this converter, a Java-based [standalone Burp Suite HTTP history
-viewer](https://github.com/mrts/burp-suite-http-proxy-history-viewer) is also
-available.
-
-## Usage
-
-Download the script and install requirements:
-
-    $ git clone https://github.com/mrts/burp-suite-http-proxy-history-converter.git
-    $ cd burp-suite-http-proxy-history-converter
-    $ pip install --requirement=requirements.txt
-
-Usage overview:
-
-    $ python convert-burp-suite-http-proxy-history-to-csv.py -h
-    usage: convert-burp-suite-http-proxy-history-to-csv.py [-h]
-                                                           [--format {html,csv}]
-                                                           [--csv-delimiter {,,;}]
-                                                           filename
-
-    Python script that converts Burp Suite HTTP proxy history files to CSV or HTML
-    files
-
-    positional arguments:
-      filename              Burp Suite HTTP proxy history file
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      --format {html,csv}   output format, default: html
-      --csv-delimiter {,,;}
-                            CSV delimiter, default: ,
-
-Convert Burp Suite HTTP proxy history file to HTML, output will be next to input
-file with `.html` extension:
-
-    python convert-burp-suite-http-proxy-history-to-csv.py example/burp-http-history.xml
-
-Convert Burp Suite HTTP proxy history file to CSV using `;` as delimiter, output
-will be next to input file with `.csv` extension:
-
-    python convert-burp-suite-http-proxy-history-to-csv.py example/burp-http-history.xml \
-        --format csv --csv-delimiter ';'
-
-**Note that CSV file fields are truncated to 32760 characters as that is the
-total number of characters that an Excel cell can contain.**
+Pasos para su ejecución:
+1. Vaya a Burp Suite, en la pestaña HTTP History, seleccione las URLs que quiere exportar y haga click derecho "Save Items"
+2. Luego de haber guardado el archivo XML, ejecute: python3 RecolectadorURLsFromBurpSuite.py archivo.xml
+3. Verá que se le imprime las URLs por pantalla.
